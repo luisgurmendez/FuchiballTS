@@ -1,4 +1,4 @@
-import { Team, Player, MatchEvent, Event, Match } from "./types/models";
+import { Team, Player, MatchEvent, Event, Match, User } from "./types/models";
 
 export const teamA: Team = {
   name: 'Trouville',
@@ -50,4 +50,10 @@ export const match: Match = {
   local: teamA,
   visitant: teamB,
   events: matchEvents
+}
+
+export const user: User = {
+  id: '1',
+  name: 'Luis',
+  username: 'luisgurmendez'
 }
