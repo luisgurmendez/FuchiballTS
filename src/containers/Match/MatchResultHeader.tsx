@@ -108,6 +108,7 @@ const Result: React.FC<ResultsProps> = ({ scrollY, result }) => {
   )
 }
 
+// TODO: Remove top padding/margin and add SafeAreaView!
 const Container = styled.View`
   position: absolute;
   top: 0;

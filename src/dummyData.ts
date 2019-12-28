@@ -20,11 +20,13 @@ export const player1: Player = {
 export const player2: Player = {
   name: 'Sebastian',
   number: 9,
+  img: require('../assets/suarez.jpg')
 }
 
 export const player3: Player = {
   name: 'Otta',
   number: 11,
+  img: require('../assets/suarez.jpg')
 }
 
 export const player4: Player = {
@@ -55,5 +57,5 @@ export const match: Match = {
 export const user: User = {
   id: '1',
   name: 'Luis',
-  username: 'luisgurmendez'
+  username: 'luisgurmendez',
 }

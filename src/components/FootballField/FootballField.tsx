@@ -20,14 +20,12 @@ interface FootballFieldProps {
 
 export const FootballField: React.FC<FootballFieldProps> = ({ formation }) => {
 
-
   const drawPlayers = (canvas: Canvas) => {
 
     if (formation) {
       formation.forEach(p => {
         drawPlayer(canvas, p)
       })
-
     }
   }
 
@@ -49,7 +47,7 @@ export const FootballField: React.FC<FootballFieldProps> = ({ formation }) => {
 const styles = StyleSheet.create({
   footballFieldContainer: {
     padding: 5,
-    backgroundColor: '#060'
+    backgroundColor: '#060',
   }
 });
 

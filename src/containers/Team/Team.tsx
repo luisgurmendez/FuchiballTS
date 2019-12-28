@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
-import { Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Image, View, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
-import { Shadow, MatchList } from '../../components';
-import { match } from '../../dummyData';
+import { Shadow } from '../../components';
+import { TeamTabs } from './TeamTabs';
+import { TabMatches } from './TabMatches';
+import { TabPlayers } from './TabPlayers';
 
 const Container = styled.View`
   flex: 1;
-  background-color: papayawhip;
   justify-content: flex-start;
   flex-direction: column
   align-items: center;
@@ -40,13 +41,6 @@ const TeamName = styled.Text`
   margin-top: 60px;
 `
 
-const MatchListContainer = styled.View`
-  padding: 0px 20px;  
-  margin-bottom: 10px;
-  width: 100%;
-  flex: 1;
-`
-
 const TeamInfo: React.FC = props => {
   return (
     <TeamName>
@@ -55,7 +49,22 @@ const TeamInfo: React.FC = props => {
   )
 }
 
+
 export const Team: React.FC<any> = props => {
+  const [tab, setTab] = useState(0);
+
+  const tabs = [{
+    index: 0,
+    title: 'Partidos',
+    screen: TabMatches
+  },
+  {
+    index: 1,
+    title: 'Jugadores',
+    screen: TabPlayers
+  }]
+
+  const SelectedTab = tabs[tab].screen
 
   return (
     <Container>
@@ -68,9 +77,11 @@ export const Team: React.FC<any> = props => {
         </Shadow>
         <TeamInfo />
       </TeamInfoContainer>
-      <MatchListContainer>
-        <MatchList matches={[match, match]} />
-      </MatchListContainer>
+      <TeamTabs selectedTabIndex={tab} tabs={tabs} onTabSelected={(tab: number) => { setTab(tab) }} />
+      <ScrollView style={{ flex: 1, width: '100%' }}>
+        <SelectedTab />
+      </ScrollView>
     </Container>
+
   )
 }

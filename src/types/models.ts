@@ -9,6 +9,7 @@ export enum Event {
 export interface Player {
   name: string;
   number: number;
+  img?: any;
 }
 
 export interface Team {

@@ -1,14 +1,25 @@
 import React from 'react';
-import { Text, Alert, View } from 'react-native';
+import { Text, Alert, View, Image } from 'react-native';
 import styled from 'styled-components/native';
-import { Match } from '../../types/models';
+import { Match, Team } from '../../types/models';
 import { getMatchResult } from './utils';
-import { Border } from '../../components/Border/Border';
+
+interface TeamInfoProps {
+  team: Team
+}
+
+const TeamInfo: React.FC<TeamInfoProps> = ({ team }) => {
+  return (
+    <View style={{ alignItems: 'flex-end', flexDirection: 'row', flexWrap: 'wrap' }}>
+      <Image style={{ height: 30, width: 30 }} source={team.img}></Image>
+      <Text style={{ fontSize: 20 }}>{team.name}</Text>
+    </View>
+  )
+}
 
 const Container = styled.ScrollView`
   width: 100%;
 `
-
 const MatchRowContainer = styled.View`
   width: 100%;
   padding: 5px 10px;
@@ -26,24 +37,13 @@ const MatchRow: React.FC<MatchProps> = ({ match }) => {
   const matchResults = getMatchResult(match);
 
   return (
-    <Border>
-      <MatchRowContainer>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-          <Text>{matchResults.winner.team.name}</Text>
-          <Text>{matchResults.winner.result}</Text>
-          <Text>{matchResults.byPenalties && `(${matchResults.winner.penaltyResult})`}</Text>
-        </View>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-          <Text>:</Text>
-        </View>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-          <Text>{matchResults.looser.result}</Text>
-          <Text>{matchResults.byPenalties && `(${matchResults.looser.penaltyResult})`}</Text>
-          <Text>{matchResults.looser.team.name}</Text>
-        </View>
-      </MatchRowContainer>
-    </Border>
-
+    <MatchRowContainer>
+      <TeamInfo team={matchResults.winner.team} />
+      <View style={{ flexDirection: 'row', alignItems: 'flex-end', flexWrap: 'wrap' }}>
+        <Text>:</Text>
+      </View>
+      <TeamInfo team={matchResults.looser.team} />
+    </MatchRowContainer>
   )
 }
 

@@ -24,13 +24,11 @@ export const Match: React.FC<MatchProps> = ({ match }) => {
   const [scrollY] = useState(new Animated.Value(0));
 
   const _renderScrollViewContent = () => {
-    // const data = Array.from({ length: 30 });
     return (
       <View style={styles.scrollViewContent}>
         {match.events.map((event, i) => (
           <MatchEvent key={i} team={event.playersTeamId === match.local.id ? match.local : match.visitant} event={event} />
         ))}
-
       </View>
     );
   }
@@ -45,6 +43,7 @@ export const Match: React.FC<MatchProps> = ({ match }) => {
         )}
       >
         {_renderScrollViewContent()}
+
       </ScrollView>
       <MatchResultHeader match={match} scrollY={scrollY} />
     </View>

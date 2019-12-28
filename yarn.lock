@@ -859,11 +859,6 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@react-native-community/async-storage@^1.7.1":
-  version "1.7.1"
-  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/@react-native-community/async-storage/-/async-storage-1.7.1.tgz#ef2104d865de61ad91bba66613e57e689ff4e6a1"
-  integrity sha1-7yEE2GXeYa2Ru6ZmE+V+aJ/05qE=
-
 "@react-native-community/cli-platform-android@^2.6.0", "@react-native-community/cli-platform-android@^2.9.0":
   version "2.9.0"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/@react-native-community/cli-platform-android/-/cli-platform-android-2.9.0.tgz#28831e61ce565a2c7d1905852fce1eecfd33cb5e"
@@ -969,10 +964,6 @@
     react-native-safe-area-view "^0.14.1"
     react-native-screens "^1.0.0 || ^1.0.0-alpha"
 
-"@types/@react-native-community/async-storage":
-  version "1.7.1"
-  resolved "https://codeload.github.com/react-native-community/async-storage/tar.gz/9aad474ff7ca64d34ef94358a39205a609455aca"
-
 "@types/axios@^0.14.0":
   version "0.14.0"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/@types/axios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
@@ -1048,6 +1039,11 @@
   dependencies:
     jest-diff "^24.3.0"
 
+"@types/jwt-decode@^2.2.1":
+  version "2.2.1"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/@types/jwt-decode/-/jwt-decode-2.2.1.tgz#afdf5c527fcfccbd4009b5fd02d1e18241f2d2f2"
+  integrity sha1-r99cUn/PzL1ACbX9AtHhgkHy0vI=
+
 "@types/prop-types@*":
   version "15.7.3"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
@@ -1060,6 +1056,13 @@
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
+
+"@types/react-native-tab-view@^2.3.0":
+  version "2.3.0"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/@types/react-native-tab-view/-/react-native-tab-view-2.3.0.tgz#1511e0f0f85056ee4476bff326464cea455b4078"
+  integrity sha1-FRHg8PhQVu5Edr/zJkZM6kVbQHg=
+  dependencies:
+    react-native-tab-view "*"
 
 "@types/react-native-vector-icons@^6.4.5":
   version "6.4.5"
@@ -1186,6 +1189,11 @@ acorn@^6.0.1:
   version "6.3.0"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/acorn/-/acorn-6.3.0.tgz#0087509119ffa4fc0a0041d1e93a417e68cb856e"
   integrity sha1-AIdQkRn/pPwKAEHR6TpBfmjLhW4=
+
+add@^2.0.6:
+  version "2.0.6"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
+  integrity sha1-JI8Kn25aUo7yKV2+7DBTITCuIjU=
 
 ajv@^6.5.5:
   version "6.10.2"
@@ -3853,6 +3861,11 @@ jsx-ast-utils@^2.0.1:
     array-includes "^3.0.3"
     object.assign "^4.1.0"
 
+jwt-decode@^2.2.0:
+  version "2.2.0"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/jwt-decode/-/jwt-decode-2.2.0.tgz#7d86bd56679f58ce6a84704a657dd392bba81a79"
+  integrity sha1-fYa9VmefWM5qhHBKZX3TkruoGnk=
+
 kind-of@^1.1.0:
   version "1.1.0"
   resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/kind-of/-/kind-of-1.1.0.tgz#140a3d2d41a36d2efcfa9377b62c24f8495a5c44"
@@ -5213,6 +5226,11 @@ react-native-screens@^2.0.0-alpha.22:
   integrity sha1-Z83kYBU5heQA4CgO06Dlvgew3Fo=
   dependencies:
     debounce "^1.2.0"
+
+react-native-tab-view@*:
+  version "2.11.0"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/react-native-tab-view/-/react-native-tab-view-2.11.0.tgz#2e57d1f617ccc88c7f452708804f3409f880b700"
+  integrity sha1-LlfR9hfMyIx/RScIgE80CfiAtwA=
 
 react-native-vector-icons@^6.6.0:
   version "6.6.0"
@@ -6706,3 +6724,8 @@ yargs@^9.0.0:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^7.0.0"
+
+yarn@^1.21.1:
+  version "1.21.1"
+  resolved "https://indigoag.jfrog.io/indigoag/api/npm/npm/yarn/-/yarn-1.21.1.tgz#1d5da01a9a03492dc4a5957befc1fd12da83d89c"
+  integrity sha1-HV2gGpoDSS3EpZV778H9EtqD2Jw=
