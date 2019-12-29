@@ -16,7 +16,7 @@ export const AppNavigator = createStackNavigator({
     screen: Login
   },
   Match: {
-    screen: () => <Match match={match} />,
+    screen: Match,
   },
   Splash: {
     screen: Splash

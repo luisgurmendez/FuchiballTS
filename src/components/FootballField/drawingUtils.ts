@@ -19,23 +19,9 @@ export function drawPlayer(canvas: Canvas, player: PlayerPosition) {
 
 }
 
-export function drawFootballField(canvas: Canvas) {
+export function drawFootballField(canvas: Canvas, options?: { striped?: boolean }) {
 
   const ctx = canvas.getContext('2d');
-
-  // Outer lines
-  ctx.beginPath();
-  ctx.rect(0, 0, canvas.width, canvas.height - 1);
-  ctx.fillStyle = "#060";
-  ctx.fill();
-  ctx.closePath();
-
-  ctx.lineWidth = 1;
-  ctx.strokeStyle = "#FFF";
-  // @ts-ignore
-  ctx.stroke();
-  ctx.closePath();
-  ctx.fillStyle = "#FFF";
 
   const penaltyBoxSize = {
     w: canvas.width * 0.15,
@@ -46,6 +32,37 @@ export function drawFootballField(canvas: Canvas) {
     w: penaltyBoxSize.w / 3,
     h: penaltyBoxSize.h * 0.45
   }
+
+  // Outer lines
+  ctx.beginPath();
+  ctx.rect(0, 0, canvas.width, canvas.height - 1);
+  ctx.fillStyle = "#060";
+  ctx.fill();
+  ctx.closePath();
+
+  if (options && options.striped) {
+    let xStripeWidth = canvas.width * 0.05
+    let xStripePos = 0;
+
+    while (xStripePos < canvas.width) {
+      ctx.beginPath();
+      ctx.rect(xStripePos, 0, xStripeWidth, canvas.height - 1);
+      ctx.fillStyle = "#0a5c0a";
+      ctx.fill();
+      ctx.closePath();
+      xStripePos += xStripeWidth * 2
+    }
+  }
+
+  // border line
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = "#FFF";
+  ctx.beginPath();
+  ctx.rect(0, 0, canvas.width, canvas.height - 1);
+  // @ts-ignore
+  ctx.stroke();
+  ctx.closePath();
+  ctx.fillStyle = "#FFF";
 
   //Home penalty box
   ctx.beginPath();

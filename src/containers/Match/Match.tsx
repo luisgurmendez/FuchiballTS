@@ -1,17 +1,16 @@
 
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Animated,
-  Image,
   ScrollView,
   StyleSheet,
   Text,
   View,
-  Alert,
 } from 'react-native';
 import { MatchResultHeader } from './MatchResultHeader';
 import { Match as MatchModel } from '../../types/models';
 import { MatchEvent } from './MatchEvent';
+import { NavigationInjectedProps } from 'react-navigation';
 
 const HEADER_MAX_HEIGHT = 230;
 
@@ -19,18 +18,30 @@ interface MatchProps {
   match: MatchModel;
 }
 
-export const Match: React.FC<MatchProps> = ({ match }) => {
+export const Match: React.FC<NavigationInjectedProps<MatchProps>> = ({ navigation: { state: { params } } }) => {
 
+  const match = params?.match;
   const [scrollY] = useState(new Animated.Value(0));
 
-  const _renderScrollViewContent = () => {
+  if (match === undefined) {
+    // TODO!
     return (
-      <View style={styles.scrollViewContent}>
-        {match.events.map((event, i) => (
-          <MatchEvent key={i} team={event.playersTeamId === match.local.id ? match.local : match.visitant} event={event} />
-        ))}
-      </View>
-    );
+      <Text>
+        No se encontro el partido seleccionado.
+    </Text>
+    )
+  }
+
+  const _renderScrollViewContent = () => {
+    if (match !== undefined) {
+      return (
+        <View style={styles.scrollViewContent}>
+          {match.events.map((event, i) => (
+            <MatchEvent key={i} team={event.playersTeamId === match.local.id ? match.local : match.visitant} event={event} />
+          ))}
+        </View>
+      );
+    }
   }
 
   return (

@@ -42,7 +42,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
       }
       <PlayerInfoContainer>
         <Text>{player.name}</Text>
-        <Text>#{player.number}</Text>
+        <Text style={{ color: '#777' }}>#{player.number}</Text>
       </PlayerInfoContainer>
     </PlayerCardContainer>
   )

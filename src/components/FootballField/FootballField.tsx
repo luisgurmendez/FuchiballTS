@@ -31,10 +31,12 @@ export const FootballField: React.FC<FootballFieldProps> = ({ formation }) => {
 
   const handleCanvas = (canvas: Canvas) => {
     const screenWidth = Math.round(Dimensions.get('window').width);
-    canvas.width = screenWidth - 10;
-    canvas.height = canvas.width * 0.64;
-    drawFootballField(canvas);
-    drawPlayers(canvas)
+    if (canvas) {
+      canvas.width = screenWidth - 10;
+      canvas.height = canvas.width * 0.64;
+      drawFootballField(canvas, { striped: true });
+      drawPlayers(canvas)
+    }
   }
 
   return (

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Image, View, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
-import { Shadow } from '../../components';
+import { Shadow, FootballField } from '../../components';
 import { TeamTabs } from './TeamTabs';
 import { TabMatches } from './TabMatches';
 import { TabPlayers } from './TabPlayers';
@@ -78,6 +78,7 @@ export const Team: React.FC<any> = props => {
         <TeamInfo />
       </TeamInfoContainer>
       <TeamTabs selectedTabIndex={tab} tabs={tabs} onTabSelected={(tab: number) => { setTab(tab) }} />
+      <FootballField />
       <ScrollView style={{ flex: 1, width: '100%' }}>
         <SelectedTab />
       </ScrollView>
