@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Alert, Text, Button } from 'react-native';
+import React, { useState } from 'react';
+import { Alert, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { SafeAreaView, withNavigation, NavigationInjectedProps } from 'react-navigation';
 import { useTextInputValue } from '../../Utils/hooks';
-import { Loader } from '../../components';
-import { ErrorResponse } from '../../types/responses';
-import { login } from '../../core/api';
 import { TextInput, SubmitButton } from '../../components/Forms';
 
 const FormContainer = styled.View`
@@ -30,13 +27,7 @@ const LoginContainer = styled.View`
   padding: 30px;
 `
 
-const OtherActionsContainer = styled.View`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-`
-
-const LoginBase: React.FC<NavigationInjectedProps> = props => {
+const RegisterBase: React.FC<NavigationInjectedProps> = props => {
 
   const [username, handleUsernameChange] = useTextInputValue('');
   const [password, handlePasswordChange] = useTextInputValue('');
@@ -44,14 +35,14 @@ const LoginBase: React.FC<NavigationInjectedProps> = props => {
   const [isSubmitting, setSubmitting] = useState(false);
 
   const handleSubmit = () => {
-    setSubmitting(true);
-    login(username, password).then((data: any) => {
-      Alert.alert(JSON.stringify(data))
-      props.navigation.navigate('Team');
-    }).catch((e: ErrorResponse) => {
-      setErrorMessage(e.message);
-      setSubmitting(false);
-    });
+    // setSubmitting(true);
+    // login(username, password).then((data: any) => {
+    //   Alert.alert(JSON.stringify(data))
+    //   props.navigation.navigate('Team');
+    // }).catch((e: ErrorResponse) => {
+    //   setErrorMessage(e.message);
+    //   setSubmitting(false);
+    // });
   }
 
   return (
@@ -62,15 +53,12 @@ const LoginBase: React.FC<NavigationInjectedProps> = props => {
       <FormContainer>
         <TextInput onChange={handleUsernameChange} value={username} autoCapitalize='none' placeholder="Usuario" />
         <TextInput onChange={handlePasswordChange} value={password} secureTextEntry={true} autoCapitalize='none' placeholder="Contraseña" />
-        <SubmitButton title="Ingresar" loading={isSubmitting} disabled={isSubmitting} activeOpacity={0.7} onPress={handleSubmit} />
-        <OtherActionsContainer>
-          <Button title="Registrarse" onPress={() => props.navigation.navigate('Register')} />
-          <Button title="Olvide la contraseña" onPress={() => { }} />
-        </OtherActionsContainer>
+        <TextInput onChange={handlePasswordChange} value={password} secureTextEntry={true} autoCapitalize='none' placeholder="Repetir Contraseña" />
+        <SubmitButton title="Registarme" loading={isSubmitting} disabled={isSubmitting} activeOpacity={0.7} onPress={handleSubmit} />
         <Text style={{ color: 'red' }}>{errorMessage}</Text>
       </FormContainer>
     </LoginContainer>
   )
 }
 
-export const Login = withNavigation(LoginBase)
+export const Register = withNavigation(RegisterBase)

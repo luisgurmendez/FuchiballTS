@@ -15,10 +15,11 @@ export interface PlayerPosition {
 };
 
 interface FootballFieldProps {
-  formation?: PlayerPosition[]
+  formation?: PlayerPosition[];
+  striped?: boolean;
 };
 
-export const FootballField: React.FC<FootballFieldProps> = ({ formation }) => {
+export const FootballField: React.FC<FootballFieldProps> = ({ formation, striped }) => {
 
   const drawPlayers = (canvas: Canvas) => {
 
@@ -34,7 +35,7 @@ export const FootballField: React.FC<FootballFieldProps> = ({ formation }) => {
     if (canvas) {
       canvas.width = screenWidth - 10;
       canvas.height = canvas.width * 0.64;
-      drawFootballField(canvas, { striped: true });
+      drawFootballField(canvas, { striped: striped });
       drawPlayers(canvas)
     }
   }

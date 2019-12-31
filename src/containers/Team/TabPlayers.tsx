@@ -2,10 +2,14 @@ import React from 'react';
 import { Player } from '../../types/models'
 import { Shadow, DefaultPlayerAvatar } from '../../components';
 import styled from 'styled-components/native';
-import { View, Text } from 'react-native';
+import { View, Text, Alert, TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { player1, player2, player3, player4 } from '../../dummyData';
+import { ScrollView } from 'react-native-gesture-handler';
+import { NavigatorService } from '../../core/navigation';
 
-const PlayerCardContainer = styled.View`
+
+// HMM Weird Interface
+const PlayerCardContainer = styled<React.FC<TouchableOpacityProps>>(Shadow)`
   height: 200;
   margin-left: 10px;
   margin-bottom: 10px;
@@ -33,8 +37,11 @@ interface PlayerCardProps {
 
 const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
 
+  const navigatorService = NavigatorService.getInstance();
+
+
   return (
-    <PlayerCardContainer as={Shadow}>
+    <PlayerCardContainer as={TouchableOpacity} activeOpacity={0.7} onPress={() => navigatorService.navigate('Player', { player: player })}>
       {player.img ?
         <PlayerImage source={player.img} />
         :
@@ -45,6 +52,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
         <Text style={{ color: '#777' }}>#{player.number}</Text>
       </PlayerInfoContainer>
     </PlayerCardContainer>
+
   )
 }
 
@@ -60,21 +68,22 @@ const TabPlayersContainer = styled.View`
 export const TabPlayers: React.FC = props => {
 
   return (
-    <TabPlayersContainer>
-      <View style={{ height: 20, width: '100%' }} />
-      <PlayerCard player={{ number: 3, name: 'luis' }} />
-      <PlayerCard player={{ number: 3, name: 'luis' }} />
-      <PlayerCard player={player1} />
-      <PlayerCard player={player2} />
-      <PlayerCard player={player3} />
-      <PlayerCard player={player4} />
-
-      <PlayerCard player={{ number: 3, name: 'luis' }} />
-      <PlayerCard player={{ number: 3, name: 'luis' }} />
-      <PlayerCard player={{ number: 3, name: 'luis' }} />
-      <PlayerCard player={{ number: 3, name: 'luis' }} />
-      <PlayerCard player={{ number: 3, name: 'luis' }} />
-      <PlayerCard player={{ number: 3, name: 'luis' }} />
-    </TabPlayersContainer>
+    <ScrollView style={{ flex: 1, width: '100%' }}>
+      <TabPlayersContainer>
+        <View style={{ height: 20, width: '100%' }} />
+        <PlayerCard player={{ number: 3, name: 'luis' }} />
+        <PlayerCard player={{ number: 3, name: 'luis' }} />
+        <PlayerCard player={player1} />
+        <PlayerCard player={player2} />
+        <PlayerCard player={player3} />
+        <PlayerCard player={player4} />
+        <PlayerCard player={{ number: 3, name: 'luis' }} />
+        <PlayerCard player={{ number: 3, name: 'luis' }} />
+        <PlayerCard player={{ number: 3, name: 'luis' }} />
+        <PlayerCard player={{ number: 3, name: 'luis' }} />
+        <PlayerCard player={{ number: 3, name: 'luis' }} />
+        <PlayerCard player={{ number: 3, name: 'luis' }} />
+      </TabPlayersContainer>
+    </ScrollView>
   )
 }

@@ -36,3 +36,14 @@ export interface User {
   name: string;
   username: string;
 }
+
+//////
+
+export interface Position {
+  team: Team;
+  matchesPlayed: number;
+  matchesWon: number;
+  matchesTied: number;
+  matchesLost: number;
+  totalPoints: number;
+}

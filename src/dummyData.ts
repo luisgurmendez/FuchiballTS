@@ -1,4 +1,4 @@
-import { Team, Player, MatchEvent, Event, Match, User } from "./types/models";
+import { Team, Player, MatchEvent, Event, Match, User, Position } from "./types/models";
 
 export const teamA: Team = {
   name: 'Trouville',
@@ -59,3 +59,202 @@ export const user: User = {
   name: 'Luis',
   username: 'luisgurmendez',
 }
+
+export const positions: Position[] = [{
+  team: teamA,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 2,
+  matchesLost: 0,
+  totalPoints: 6
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 2
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 2
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 1
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}, {
+  team: teamB,
+  matchesPlayed: 2,
+  matchesTied: 0,
+  matchesWon: 0,
+  matchesLost: 2,
+  totalPoints: 0
+}
+]

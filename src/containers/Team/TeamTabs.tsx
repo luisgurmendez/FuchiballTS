@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
-import { Shadow } from '../../components/Shadow/Shadow';
 
 const TabContainer = styled.TouchableOpacity<{ selected: boolean }>`
   flex: 1;
-  height: 26;
+  height: 36;
   border-bottom-width: ${props => props.selected ? '2' : '0'};
   border-bottom-color: #4684f0;
+  padding-top: 10;
 `
 
 interface TabProps {

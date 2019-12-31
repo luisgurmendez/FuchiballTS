@@ -6,7 +6,11 @@ import { Match } from '../containers/Match/Match';
 import { Login } from '../containers/Login/Login';
 import { match } from '../dummyData';
 import { Splash } from '../containers/Splash/Splash';
+import { Register } from '../containers/Resgister/Register';
+import { Player } from '../containers/Player/Player';
 import { NavigationActions } from 'react-navigation';
+import { Test } from '../containers/Test';
+import { Alert } from 'react-native';
 
 export const AppNavigator = createStackNavigator({
   Team: {
@@ -15,12 +19,21 @@ export const AppNavigator = createStackNavigator({
   Login: {
     screen: Login
   },
+  Register: {
+    screen: Register
+  },
   Match: {
     screen: Match,
+  },
+  Player: {
+    screen: Player
   },
   Splash: {
     screen: Splash
   },
+  Test: {
+    screen: Test
+  }
 }, {
   initialRouteName: 'Team',
   headerMode: 'none',
@@ -40,17 +53,18 @@ export class NavigatorService {
   public static getInstance(): NavigatorService {
 
     if (!this.instance) {
+      Alert.alert('creating instance')
       this.instance = new NavigatorService();
     }
     return this.instance;
   }
-
 
   setTopLevelNavigator(navigatorRef: any) {
     this.navigator = navigatorRef;
   }
 
   navigate(routeName: string, params?: NavigationParams) {
+
     this.navigator.dispatch(
       NavigationActions.navigate({
         routeName,
