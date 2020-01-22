@@ -1,0 +1,61 @@
+{
+  "name": "elcanchero",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start:cache": "react-native start --reset-cache",
+    "start:ios": "react-native run-ios",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/jwt-decode": "^2.2.1",
+    "@types/react-native-tab-view": "^2.3.0",
+    "@types/styled-components": "^4.4.1",
+    "add": "^2.0.6",
+    "axios": "^0.19.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "jwt-decode": "^2.2.0",
+    "react": "16.8.6",
+    "react-native": "0.60.5",
+    "react-native-canvas": "^0.1.34",
+    "react-native-gesture-handler": "^1.5.2",
+    "react-native-reanimated": "^1.4.0",
+    "react-native-screens": "^2.0.0-alpha.22",
+    "react-native-vector-icons": "^6.6.0",
+    "react-native-webview": "^8.0.1",
+    "react-navigation": "^4.0.10",
+    "react-navigation-drawer": "^2.3.3",
+    "react-navigation-stack": "^1.10.3",
+    "styled-components": "^4.4.1",
+    "yarn": "^1.21.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/runtime": "^7.5.0",
+    "@react-native-community/eslint-config": "^0.0.3",
+    "@types/jest": "^24.0.18",
+    "@types/react": "^16.9.2",
+    "@types/react-native": "^0.60.14",
+    "@types/react-native-canvas": "^0.1.2",
+    "@types/react-native-vector-icons": "^6.4.5",
+    "@types/react-navigation": "^3.4.0",
+    "@types/react-test-renderer": "^16.9.0",
+    "babel-jest": "^24.1.0",
+    "jest": "^24.1.0",
+    "metro-react-native-babel-preset": "0.54.1",
+    "react-test-renderer": "16.8.6",
+    "typescript": "^3.6.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
