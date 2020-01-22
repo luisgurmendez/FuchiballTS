@@ -7,6 +7,7 @@ import { ShadowProps } from '../../components/Shadow/Shadow';
 import { Text, View } from 'react-native';
 // @ts-ignore
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
+import { TeamLogo } from 'components/Team/TeamLogo';
 
 const Container = styled.View<ShadowProps>`
   width: 100%;
@@ -34,12 +35,6 @@ const EventText = styled.Text`
 const MinuteText = styled.Text`
   color: gray;
   font-weight: bold;
-`
-
-const TeamLogo = styled.Image`
-  align-self: center;
-  width: 60;
-  height: 60;
 `
 
 interface MatchEventProps {
@@ -102,7 +97,7 @@ export const MatchEvent: React.FC<MatchEventProps> = ({ event, team }) => {
           <Text>{event.player.name}</Text>
           <Subtext>{`${team.name} #${event.player.number}`}</Subtext>
         </View>
-        <TeamLogo source={team.img} />
+        <TeamLogo size={60} logo={team.img} />
       </View>
     </Container>
   )

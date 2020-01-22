@@ -54,7 +54,6 @@ export const Match: React.FC<NavigationInjectedProps<MatchProps>> = ({ navigatio
         )}
       >
         {_renderScrollViewContent()}
-
       </ScrollView>
       <MatchResultHeader match={match} scrollY={scrollY} />
     </View>

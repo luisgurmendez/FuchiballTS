@@ -1,7 +1,6 @@
 import React from 'react';
 // @ts-ignore
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
-import { View } from 'react-native';
 import styled from 'styled-components/native';
 
 const DefaultPlayerAvatarWrapper = styled.View`

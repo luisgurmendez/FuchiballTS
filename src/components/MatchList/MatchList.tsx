@@ -4,30 +4,45 @@ import styled from 'styled-components/native';
 import { Match, Team } from '../../types/models';
 import { getMatchResult } from './utils';
 import { NavigatorService } from '../../core/navigation';
+import { TeamLogo } from 'components/Team/TeamLogo';
+import { Margin } from 'components';
 
 interface TeamInfoProps {
-  team: Team
+  team: Team;
+  inverted?: boolean;
 }
 
-const TeamInfo: React.FC<TeamInfoProps> = ({ team }) => {
+const TeamInfo: React.FC<TeamInfoProps> = ({ inverted, team }) => {
   return (
-    <View style={{ alignItems: 'flex-end', flexDirection: 'row', flexWrap: 'wrap' }}>
-      <Image style={{ height: 30, width: 30 }} source={team.img}></Image>
-      <Text style={{ fontSize: 20 }}>{team.name}</Text>
+    <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
+      {!inverted ?
+        <>
+          <Margin marginRight='10'>
+            <TeamLogo size={30} logo={team.img} />
+          </Margin>
+          <Text style={{ fontSize: 18 }}>{team.name}</Text>
+        </>
+        :
+        <>
+          <Text style={{ fontSize: 18, marginRight: 10 }}>{team.name}</Text>
+          <TeamLogo size={30} logo={team.img} />
+        </>
+      }
     </View>
   )
 }
 
 const Container = styled.ScrollView`
-  width: 100%;
-`
+      width: 100%;
+    `
 const MatchRowContainer = styled.TouchableOpacity`
-  width: 100%;
-  padding: 5px 10px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-`
+      width: 100%;
+      padding: 5px 10px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+    `
 
 interface MatchProps {
   match: Match
@@ -36,14 +51,17 @@ interface MatchProps {
 const MatchRow: React.FC<MatchProps> = ({ match }) => {
 
   const matchResults = getMatchResult(match);
+  const navigatorService = NavigatorService.getInstance();
 
   return (
-    <MatchRowContainer activeOpacity={0.6} onPress={() => NavigatorService.getInstance().navigate('Match', { match: match })}>
+    <MatchRowContainer activeOpacity={0.6} onPress={() => navigatorService.navigate('Match', { match: match })}>
       <TeamInfo team={matchResults.winner.team} />
-      <View style={{ flexDirection: 'row', alignItems: 'flex-end', flexWrap: 'wrap' }}>
-        <Text>:</Text>
+      <View style={{ marginHorizontal: 10, flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap' }}>
+        <Text style={{ fontSize: 18 }}>{matchResults.winner.result}</Text>
+        <Text>-</Text>
+        <Text style={{ fontSize: 18 }}>{matchResults.looser.result}</Text>
       </View>
-      <TeamInfo team={matchResults.looser.team} />
+      <TeamInfo inverted team={matchResults.looser.team} />
     </MatchRowContainer>
   )
 }

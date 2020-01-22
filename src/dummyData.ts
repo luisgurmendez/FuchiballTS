@@ -12,6 +12,11 @@ export const teamB: Team = {
   img: require('../assets/labandadelchori.png')
 };
 
+export const teamC: Team = {
+  name: 'El Chivito',
+  id: 'chivito',
+};
+
 export const player1: Player = {
   name: 'Luis',
   number: 3,
@@ -51,6 +56,12 @@ export const matchEvents: MatchEvent[] = [
 export const match: Match = {
   local: teamA,
   visitant: teamB,
+  events: matchEvents
+}
+
+export const match2: Match = {
+  local: teamA,
+  visitant: teamC,
   events: matchEvents
 }
 

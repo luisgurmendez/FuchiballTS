@@ -17,6 +17,7 @@ const TeamLogo = styled.Image`
   width: 80;
   height: 80;
 `
+
 const TeamName = styled.Text`
   align-self: center;
 `

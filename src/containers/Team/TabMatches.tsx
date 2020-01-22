@@ -1,7 +1,7 @@
 import React from 'react';
-import { match } from '../../dummyData';
+import { match, match2 } from '../../dummyData';
 import styled from 'styled-components/native';
-import { MatchList } from '../../components';
+import { MatchList, Subtitle } from 'components';
 import { ScrollView } from 'react-native';
 
 const MatchListContainer = styled.View`
@@ -16,7 +16,8 @@ export const TabMatches: React.FC = () => {
 
     <ScrollView style={{ flex: 1, width: '100%' }}>
       <MatchListContainer>
-        <MatchList matches={[match, match]} />
+        <Subtitle>Ultimos Partidos</Subtitle>
+        <MatchList matches={[match, match, match2]} />
       </MatchListContainer>
     </ScrollView>
   )

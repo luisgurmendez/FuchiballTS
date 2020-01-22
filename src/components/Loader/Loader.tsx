@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 //@ts-ignore
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
-import styled from 'styled-components/native';
 import { Animated, Easing } from 'react-native';
 
 interface LoaderProps {

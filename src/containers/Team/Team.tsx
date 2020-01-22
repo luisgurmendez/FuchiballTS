@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 import styled from 'styled-components/native';
 import { Shadow } from '../../components';
 import { TeamTabs } from './TeamTabs';
 import { TabMatches } from './TabMatches';
 import { TabPlayers } from './TabPlayers';
 import { TabPositions } from './TabPositions';
+import { NavigationInjectedProps } from 'react-navigation';
+import { Team as TeamModel } from '../../types/models';
+import { TeamAchievements } from 'components';
+import { TeamLogo } from 'components/Team/TeamLogo';
 
 const Container = styled.View`
   flex: 1;
@@ -21,12 +25,13 @@ const PortraitImageContainer = styled.View`
   background-color: black;
 `
 
-const Avatar = styled.Image`
+const TeamLogoContainer = styled(Shadow)`
   width: 120px;
   height: 120px;
   border-radius: 60px;
   background-color: white;
-  position: absolute;
+  position: relative;
+  top: -60px;
   border-width: 2px
   border-color: lightgray;
 `
@@ -35,24 +40,22 @@ const TeamInfoContainer = styled.View`
   width: 100%;
   padding: 10px 20px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
 `
 
 const TeamName = styled.Text`
   font-size: 22px;
-  margin-top: 60px;
+  margin-top: -60px;
 `
 
-const TeamInfo: React.FC = props => {
-  return (
-    <TeamName>
-      Trouville FC
-    </TeamName>
-  )
+interface TeamProps {
+  team: TeamModel;
 }
 
-
-export const Team: React.FC<any> = props => {
+export const Team: React.FC<NavigationInjectedProps<TeamProps>> = ({ navigation: { state: { params } } }) => {
   const [tab, setTab] = useState(0);
+  const team = params!.team;
 
   const tabs = [{
     index: 0,
@@ -77,10 +80,15 @@ export const Team: React.FC<any> = props => {
         <Image style={{ flex: 1, width: '102%', backgroundColor: 'black' }} resizeMode="cover" source={require('../../../assets/laTrouvaPortada.png')} />
       </PortraitImageContainer>
       <TeamInfoContainer>
-        <Shadow>
-          <Avatar style={{ transform: [{ translateY: -60 }] }} source={require('../../../assets/laTrouva.png')} />
-        </Shadow>
-        <TeamInfo />
+        <View style={{ display: 'flex', justifyContent: 'flex-start', flexDirection: 'row' }}>
+          <TeamLogoContainer>
+            <TeamLogo rounded size={116} logo={team.img} />
+          </TeamLogoContainer>
+          <TeamAchievements team={team} />
+        </View>
+        <TeamName>
+          {team.name}
+        </TeamName>
       </TeamInfoContainer>
       <TeamTabs selectedTabIndex={tab} tabs={tabs} onTabSelected={(tab: number) => { setTab(tab) }} />
       <SelectedTab />

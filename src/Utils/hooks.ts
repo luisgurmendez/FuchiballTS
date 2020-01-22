@@ -10,5 +10,3 @@ export function useTextInputValue(initalValue: string): [string, (e: NativeSynth
 
   return [value, handleOnChangeValue];
 }
-
-

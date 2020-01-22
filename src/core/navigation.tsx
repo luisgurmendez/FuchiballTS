@@ -1,18 +1,18 @@
-import React from 'react';
 import { createStackNavigator } from "react-navigation-stack";
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer, NavigationParams } from "react-navigation";
 import { Team } from '../containers/Team/Team';
 import { Match } from '../containers/Match/Match';
 import { Login } from '../containers/Login/Login';
-import { match } from '../dummyData';
 import { Splash } from '../containers/Splash/Splash';
 import { Register } from '../containers/Resgister/Register';
 import { Player } from '../containers/Player/Player';
+import { Home } from "../containers/Home/Home";
 import { NavigationActions } from 'react-navigation';
 import { Test } from '../containers/Test';
-import { Alert } from 'react-native';
+import { Drawer } from "containers/Drawer/Drawer";
 
-export const AppNavigator = createStackNavigator({
+export const stackNavigator = createStackNavigator({
   Team: {
     screen: Team,
   },
@@ -25,6 +25,9 @@ export const AppNavigator = createStackNavigator({
   Match: {
     screen: Match,
   },
+  Home: {
+    screen: Home
+  },
   Player: {
     screen: Player
   },
@@ -35,7 +38,7 @@ export const AppNavigator = createStackNavigator({
     screen: Test
   }
 }, {
-  initialRouteName: 'Team',
+  initialRouteName: 'Home',
   headerMode: 'none',
   navigationOptions: {
     header: null,
@@ -44,16 +47,14 @@ export const AppNavigator = createStackNavigator({
   }
 });
 
-export const AppContainer = createAppContainer(AppNavigator);
+export const AppContainer = createAppContainer(stackNavigator);
 
 export class NavigatorService {
   private navigator: any;
   private static instance: NavigatorService;
 
   public static getInstance(): NavigatorService {
-
     if (!this.instance) {
-      Alert.alert('creating instance')
       this.instance = new NavigatorService();
     }
     return this.instance;
