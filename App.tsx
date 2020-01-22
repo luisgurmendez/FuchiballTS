@@ -4,6 +4,7 @@ import { initApi } from './src/core/api';
 
 initApi();
 
+
 const App: React.FC = () => {
   const navigatorService = NavigatorService.getInstance();
 
