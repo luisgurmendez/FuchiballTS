@@ -38,7 +38,7 @@ export const stackNavigator = createStackNavigator({
     screen: Test
   }
 }, {
-  initialRouteName: 'Home',
+  initialRouteName: 'Login',
   headerMode: 'none',
   navigationOptions: {
     header: null,

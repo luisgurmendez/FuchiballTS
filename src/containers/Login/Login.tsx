@@ -3,7 +3,6 @@ import { Alert, Text, Button } from 'react-native';
 import styled from 'styled-components/native';
 import { SafeAreaView, withNavigation, NavigationInjectedProps } from 'react-navigation';
 import { useTextInputValue } from '../../Utils/hooks';
-import { Loader } from '../../components';
 import { ErrorResponse } from '../../types/responses';
 import { login } from '../../core/api';
 import { TextInput, SubmitButton } from '../../components/Forms';
@@ -67,7 +66,7 @@ const LoginBase: React.FC<NavigationInjectedProps> = props => {
           <Button title="Registrarse" onPress={() => props.navigation.navigate('Register')} />
           <Button title="Olvide la contraseña" onPress={() => { }} />
         </OtherActionsContainer>
-        <Text style={{ color: 'red' }}>{errorMessage}</Text>
+        <Text style={{ borderWidth: 1, color: 'red' }}>{errorMessage}</Text>
       </FormContainer>
     </LoginContainer>
   )

@@ -2,12 +2,15 @@ import React from "react";
 import { TouchableOpacityProps, Text } from "react-native";
 import styled from "styled-components/native";
 import { Loader } from "../Loader/Loader";
+import { COLORS } from "constants/colors";
 
 const ButtonBase = styled.TouchableOpacity`
-  background-color: #4684f0;
+  background-color: ${COLORS.main};
   padding: 15px;
   border-radius: 5px;
   text-align: center;
+  display: flex;
+  align-items: center;
 `
 const ButtonTitle = styled.Text`
   color: white;
@@ -23,7 +26,12 @@ interface SubmitButtonProps extends TouchableOpacityProps {
 export const SubmitButton: React.FC<SubmitButtonProps> = ({ loading, title, ...rest }) => {
   return (
     <ButtonBase {...rest}>
-      <ButtonTitle> {loading ? <Loader /> : title}</ButtonTitle>
+      {loading ?
+        <Loader />
+        :
+        <ButtonTitle>{title}</ButtonTitle>
+      }
+
     </ButtonBase>
 
   )

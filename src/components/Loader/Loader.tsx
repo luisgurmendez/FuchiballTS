@@ -1,36 +1,49 @@
-import React, { useState } from 'react';
+
+import React, { Component } from 'react';
+import { View, Animated, Easing } from 'react-native';
 //@ts-ignore
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
-import { Animated, Easing } from 'react-native';
 
 interface LoaderProps {
   size?: number;
   color?: string;
 }
 
-export const Loader: React.FC<LoaderProps> = ({ size = 25, color = "white" }) => {
+interface LoaderState {
+  spinAnim: Animated.Value;
+}
 
-  const [spinValue] = useState(new Animated.Value(0));
+const AnimatedIcon = Animated.createAnimatedComponent(Icon);
 
-  // First set up animation 
-  Animated.loop(Animated.timing(
-    spinValue,
-    {
-      toValue: 1,
-      duration: 3000,
-      easing: Easing.linear
-    }
-  )).start()
+export class Loader extends Component<LoaderProps, LoaderState> {
+  constructor(props: any) {
+    super(props);
+    this.state = { spinAnim: new Animated.Value(0) }
+  }
 
-  // Second interpolate beginning and end values (in this case 0 and 1)
-  const spin = spinValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '360deg']
-  })
+  componentDidMount() {
+    Animated.loop(Animated.timing(
+      this.state.spinAnim,
+      {
+        toValue: 1,
+        duration: 1800,
+        easing: Easing.linear,
+        useNativeDriver: true
+      }
+    )).start();
+  }
 
-  //TODO: Make it animatable
-  // transform: [{ rotate: spin }] }}
-  return (
-    <Icon name="futbol" size={size} color={color} />
-  )
+  render() {
+    const { size = 25, color = "white" } = this.props;
+
+    const spin = this.state.spinAnim.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg']
+    });
+    return (
+      <View style={{ width: size, height: size, justifyContent: 'center', alignItems: 'center' }}>
+        <AnimatedIcon name="futbol" size={size} color={color} style={{ transform: [{ rotate: spin }] }} />
+      </View>
+    );
+  }
 }
