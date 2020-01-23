@@ -8,4 +8,6 @@
 
 // AppRegistry.registerComponent(appName, () => App);
 
-export default from './storybook/index';
+
+// TODO: Add some env variable that runs either the app or the storybook
+export default from './storybook';
