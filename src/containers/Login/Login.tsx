@@ -66,7 +66,7 @@ const LoginBase: React.FC<NavigationInjectedProps> = props => {
           <Button title="Registrarse" onPress={() => props.navigation.navigate('Register')} />
           <Button title="Olvide la contraseña" onPress={() => { }} />
         </OtherActionsContainer>
-        <Text style={{ borderWidth: 1, color: 'red' }}>{errorMessage}</Text>
+        <Text style={{ color: 'red' }}>{errorMessage}</Text>
       </FormContainer>
     </LoginContainer>
   )
