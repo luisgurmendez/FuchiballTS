@@ -4,8 +4,8 @@ import styled from 'styled-components/native';
 import { SafeAreaView, withNavigation, NavigationInjectedProps } from 'react-navigation';
 import { useTextInputValue } from '../../Utils/hooks';
 import { ErrorResponse } from '../../types/responses';
-import { login } from '../../core/api';
 import { TextInput, SubmitButton } from '../../components/Forms';
+import { Auth } from 'core/Auth';
 
 const FormContainer = styled.View`
   flex: 2;
@@ -42,15 +42,18 @@ const LoginBase: React.FC<NavigationInjectedProps> = props => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitting, setSubmitting] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setSubmitting(true);
-    login(username, password).then((data: any) => {
+    try {
+      const data = await Auth.login(username, password);
+      console.log(data);
       Alert.alert(JSON.stringify(data))
+      setSubmitting(false);
       props.navigation.navigate('Team');
-    }).catch((e: ErrorResponse) => {
+    } catch (e) {
       setErrorMessage(e.message);
       setSubmitting(false);
-    });
+    }
   }
 
   return (

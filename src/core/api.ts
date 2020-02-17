@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { getTokens, setTokens } from './storage';
 import { NavigatorService } from './navigation';
-import { Alert } from 'react-native';
+import { Tokens } from './Auth';
 
 axios.interceptors.response.use((response) => {
   return response;
@@ -9,6 +8,8 @@ axios.interceptors.response.use((response) => {
 
   if (error.response.status === 401 || error.response.status === 403) {
     //TODO: Authorization vs authentication?
+
+
     NavigatorService.getInstance().navigate('Login')
   }
 
@@ -17,7 +18,7 @@ axios.interceptors.response.use((response) => {
 
 const baseUrl = 'http://localhost:3001';
 
-class Api {
+export class Api {
 
   private static instance: Api;
   private baseUrl: string;
@@ -44,12 +45,9 @@ class Api {
     return headers;
   }
 
-  async setUpTokens() {
-    let tokens = await getTokens();
-    if (tokens !== undefined) {
-      this.authToken = tokens.authToken;
-      this.refreshToken = tokens.refreshToken;
-    }
+  async setTokens(tokens: Tokens) {
+    this.authToken = tokens.authToken;
+    this.refreshToken = tokens.refreshToken;
   }
 
   post(url: string, data: any = {}) {
@@ -61,34 +59,7 @@ class Api {
   }
 }
 
-export function initApi() {
+export function initApi(tokens: Tokens) {
   const api = Api.getInstance();
-  api.setUpTokens();
-}
-
-export function login(username: string, password: string) {
-  const api = Api.getInstance();
-  return api.post('/login', { username: username, password: password }).then(data => {
-    if (data.status === 200) {
-      setTokens(data.data.token, data.data.refreshToken).then(() => {
-        api.setUpTokens();
-      })
-    }
-  })
-}
-
-export function refreshToken(token: string, refreshToken: string) {
-
-  const api = Api.getInstance();
-  return api.post('/refresh', { token: token, refreshToken: refreshToken }).then(data => {
-    if (data.status === 200) {
-      setTokens(data.data.token, data.data.refreshToken).then(() => {
-        api.setUpTokens();
-      })
-    }
-  })
-}
-
-export function getUsers() {
-  return Api.getInstance().get('/user/all')
+  api.setTokens(tokens);
 }

@@ -10,7 +10,6 @@ import { Player } from '../containers/Player/Player';
 import { Home } from "../containers/Home/Home";
 import { NavigationActions } from 'react-navigation';
 import { Test } from '../containers/Test';
-import { Drawer } from "containers/Drawer/Drawer";
 
 export const stackNavigator = createStackNavigator({
   Team: {
@@ -38,7 +37,7 @@ export const stackNavigator = createStackNavigator({
     screen: Test
   }
 }, {
-  initialRouteName: 'Login',
+  initialRouteName: 'Splash',
   headerMode: 'none',
   navigationOptions: {
     header: null,
@@ -52,6 +51,7 @@ export const AppContainer = createAppContainer(stackNavigator);
 export class NavigatorService {
   private navigator: any;
   private static instance: NavigatorService;
+  public homeScreen: string = 'Home';
 
   public static getInstance(): NavigatorService {
     if (!this.instance) {
@@ -65,7 +65,6 @@ export class NavigatorService {
   }
 
   navigate(routeName: string, params?: NavigationParams) {
-
     this.navigator.dispatch(
       NavigationActions.navigate({
         routeName,

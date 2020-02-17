@@ -1,35 +1,34 @@
 import React, { useEffect } from 'react';
-import { getTokens } from '../../core/storage';
 import { NavigationInjectedProps, withNavigation } from 'react-navigation';
-import { View, Alert } from 'react-native';
+import { View } from 'react-native';
 import { Loader } from '../../components';
 import jwtDecode from 'jwt-decode';
-import { refreshToken, getUsers } from '../../core/api';
+import { initApi } from '../../core/Api';
+import { Auth, NoTokenError, RefreshTokenError } from 'core/Auth';
+import { NavigatorService } from 'core/navigation';
 
 export const SplashBase: React.FC<NavigationInjectedProps> = props => {
+  const navigatorService = NavigatorService.getInstance();
+
+  const handleInitApi = async () => {
+    try {
+      const tokens = await Auth.getStoredTokens();
+      if (Auth.validateToken(tokens.authToken)) {
+        initApi(tokens);
+        navigatorService.navigate(navigatorService.homeScreen);
+      } else {
+        await Auth.refreshToken(tokens.authToken, tokens.refreshToken)
+      }
+    } catch (e) {
+      if (e instanceof NoTokenError || e instanceof RefreshTokenError) {
+        navigatorService.navigate('Login');
+      }
+    }
+  }
 
   useEffect(() => {
-    getTokens().then((tokens) => {
-      if (tokens !== undefined) {
-        const tokenData = jwtDecode<{ exp: number }>(tokens.authToken);
-        if (tokenData !== null && typeof tokenData === 'object') {
-          if (Date.now() < tokenData!.exp * 1000) {
-            props.navigation.navigate('Team');
-            return;
-          } else {
-            // Refresh token;
-            refreshToken(tokens.authToken, tokens.refreshToken).then(() => {
-              props.navigation.navigate('Team');
-            }).catch(() => {
-              props.navigation.navigate('Login');
-            });
-          }
-        }
-      } else {
-        props.navigation.navigate('Login');
-      }
-    })
-  }, [])
+    handleInitApi();
+  }, []);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>

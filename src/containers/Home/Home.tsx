@@ -11,16 +11,8 @@ export const Home: React.FC = () => {
       <Title>Mis Equipos:</Title>
       <TeamBubbleList teams={teams} />
       <Margin marginTop="15">
-        <Title>Proximos partidos:</Title>
-      </Margin>
-      <Margin marginTop="15">
-        <Title>Proximos partidos:</Title>
-      </Margin>
-      <Margin marginTop="15">
-        <Title>Proximos partidos:</Title>
-      </Margin>
-      <Margin marginTop="15">
-        <Title>Proximos partidos:</Title>
+        <Title>Ultimo partido:</Title>
+        <LastMatch />
       </Margin>
     </SafeAreaView>
   )
