@@ -1,6 +1,13 @@
+export interface PlayerPosition {
+  num: number | string;
+  xPercent: number;
+  yPercent: number;
+};
+
+export type Formation = PlayerPosition[]
 
 // 4-3-3
-export const formation433 = [
+export const formation433: Formation = [
 
   { num: 1, xPercent: 5, yPercent: 50 },
 
@@ -17,3 +24,9 @@ export const formation433 = [
   { num: 9, xPercent: 75, yPercent: 50 },
   { num: 11, xPercent: 70, yPercent: 90 },
 ];
+
+
+
+export const mirrorFormation = (formation: Formation) => {
+  return formation.map(pp => ({ num: pp.num, xPercent: 100 - pp.xPercent, yPercent: 100 - pp.yPercent }));
+}

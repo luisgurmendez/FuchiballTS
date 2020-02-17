@@ -1,14 +1,14 @@
 import Canvas from "react-native-canvas";
-import { PlayerPosition } from "./FootballField";
+import { PlayerPosition } from "./formationUtils";
 
-export function drawPlayer(canvas: Canvas, player: PlayerPosition) {
+export function drawPlayer(canvas: Canvas, player: PlayerPosition, color: string = "#4d80e4") {
 
   const x = player.xPercent * canvas.width / 100;
   const y = player.yPercent * canvas.height / 100;
 
   const ctx = canvas.getContext('2d');
   ctx.beginPath()
-  ctx.fillStyle = "#4d80e4"
+  ctx.fillStyle = color;
   ctx.arc(x, y, 10, 0, 2 * Math.PI, false);
   ctx.fill();
   ctx.fillStyle = '#FFF';
@@ -16,7 +16,6 @@ export function drawPlayer(canvas: Canvas, player: PlayerPosition) {
   ctx.textAlign = 'center';
   ctx.fillText(player.num.toString(), x, y + 3);
   ctx.fill();
-
 }
 
 export function drawFootballField(canvas: Canvas, options?: { striped?: boolean }) {

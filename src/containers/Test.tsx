@@ -5,7 +5,8 @@ import { positions } from '../dummyData';
 import { TournamentBrackets } from 'components/TournamentBrackets/TournamentBrackets';
 import { View } from 'react-native';
 import { FootballField } from 'components';
-import { formation433 } from 'components/FootballField/formations';
+import { formation433 } from 'components/FootballField/formationUtils';
+import { HorizontalTabbedScrollView } from 'components/HorizontalTabbedScrollView/HorizontalTabbedScrollView';
 
 export const Test: React.FC = props => {
 
@@ -25,7 +26,19 @@ export const Test: React.FC = props => {
         <TournamentBrackets />
       </View> */}
 
-      <FootballField formation={formation433} />
+      {/* <FootballField formation={formation433} /> */}
+      <HorizontalTabbedScrollView>
+        <View style={{ width: 400, height: 200, backgroundColor: 'red', marginLeft: 5 }} />
+        <View style={{ width: 400, height: 200, backgroundColor: 'red', marginLeft: 5 }} />
+        <View style={{ width: 400, height: 200, backgroundColor: 'red', marginLeft: 5 }} />
+        <View style={{ width: 400, height: 200, backgroundColor: 'red', marginLeft: 5 }} />
+        <View style={{ width: 400, height: 200, backgroundColor: 'red', marginLeft: 5 }} />
+        <View style={{ width: 400, height: 200, backgroundColor: 'red', marginLeft: 5 }} />
+        <View style={{ width: 400, height: 200, backgroundColor: 'red', marginLeft: 5 }} />
+        <View style={{ width: 400, height: 200, backgroundColor: 'red', marginLeft: 5 }} />
+        <View style={{ width: 400, height: 200, backgroundColor: 'red', marginLeft: 5 }} />
+
+      </HorizontalTabbedScrollView>
     </SafeAreaView>
   )
 }

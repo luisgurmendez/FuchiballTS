@@ -14,7 +14,7 @@ export const TeamBubbleList: React.FC<TeamBubbleListProps> = ({ teams }) => {
   const navigationService = NavigatorService.getInstance();
 
   return (
-    <ScrollView horizontal style={{ maxHeight: 90 }}>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ maxHeight: 90 }}>
       {teams.map(t => (
         <Margin marginRight='20' >
           <TeamBubble key={t.id} team={t} onPress={() => navigationService.navigate('Team', { team: t })} />

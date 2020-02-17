@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { teamA, teamB, teamC } from '../../dummyData';
 import { Title, TeamBubbleList, Margin } from 'components'
+import { LastMatch } from './LastMatch';
 
 export const Home: React.FC = () => {
   const teams = [teamA, teamB, teamC, teamA, teamA];

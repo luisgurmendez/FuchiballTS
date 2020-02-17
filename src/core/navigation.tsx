@@ -37,7 +37,7 @@ export const stackNavigator = createStackNavigator({
     screen: Test
   }
 }, {
-  initialRouteName: 'Splash',
+  initialRouteName: 'Home',
   headerMode: 'none',
   navigationOptions: {
     header: null,

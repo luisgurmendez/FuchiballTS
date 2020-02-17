@@ -5,35 +5,31 @@ import {
   Dimensions,
   View,
 } from 'react-native';
-
 import { drawFootballField, drawPlayer } from './drawingUtils';
-
-export interface PlayerPosition {
-  num: number | string;
-  xPercent: number;
-  yPercent: number;
-};
+import { Formation } from './formationUtils';
 
 interface FootballFieldProps {
-  formation?: PlayerPosition[];
+  formation?: Formation;
+  formationColor?: string;
   striped?: boolean;
+  size?: number;
 };
 
-export const FootballField: React.FC<FootballFieldProps> = ({ formation, striped }) => {
+export const FootballField: React.FC<FootballFieldProps> = ({ formation, formationColor, striped, size }) => {
 
   const drawPlayers = (canvas: Canvas) => {
 
     if (formation) {
       formation.forEach(p => {
-        drawPlayer(canvas, p)
+        drawPlayer(canvas, p, formationColor)
       })
     }
   }
 
   const handleCanvas = (canvas: Canvas) => {
-    const screenWidth = Math.round(Dimensions.get('window').width);
+    const width = size !== undefined ? size : Math.round(Dimensions.get('window').width);
     if (canvas) {
-      canvas.width = screenWidth - 10;
+      canvas.width = width - 10;
       canvas.height = canvas.width * 0.64;
       drawFootballField(canvas, { striped: striped });
       drawPlayers(canvas)
@@ -41,7 +37,7 @@ export const FootballField: React.FC<FootballFieldProps> = ({ formation, striped
   }
 
   return (
-    <View style={styles.footballFieldContainer} >
+    <View style={styles.footballFieldContainer}>
       <Canvas ref={handleCanvas} />
     </View>
   )
