@@ -1,7 +1,16 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Text } from 'react-native';
-import { Position } from '../../types/models';
+import { Team } from 'models/team';
+
+export interface Position {
+  team: Team;
+  matchesPlayed: number;
+  matchesWon: number;
+  matchesTied: number;
+  matchesLost: number;
+  totalPoints: number;
+}
 
 const Row = styled.View`
   border-top-width: 1;

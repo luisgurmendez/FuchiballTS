@@ -49,8 +49,9 @@ const LoginBase: React.FC<NavigationInjectedProps> = props => {
       console.log(data);
       Alert.alert(JSON.stringify(data))
       setSubmitting(false);
-      props.navigation.navigate('Team');
+      props.navigation.navigate('Home');
     } catch (e) {
+      console.log(e)
       setErrorMessage(e.message);
       setSubmitting(false);
     }

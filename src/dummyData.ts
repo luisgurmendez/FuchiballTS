@@ -1,4 +1,8 @@
-import { Team, Player, MatchEvent, Event, Match, User, Position } from "./types/models";
+import { Team } from "models/team";
+import { Player } from "models/player";
+import { MatchEvent, Match, Event } from "models/match";
+import { User } from "models/user";
+import { Position } from "components/PositionTable/PositionTable";
 
 export const teamA: Team = {
   name: 'Trouville',

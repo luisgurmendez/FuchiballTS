@@ -43,7 +43,7 @@ export class Auth {
 
   static async login(username: string, password: string) {
     const api = Api.getInstance();
-    const data = await api.post('/login', { username: username, password: password });
+    const data = await api.post('/auth/login', { username: username, password: password });
     if (data.status === 200) {
       this.setTokens(data.data.token, data.data.refreshToken)
     } else {
@@ -54,7 +54,7 @@ export class Auth {
 
   static async refreshToken(token: string, refreshToken: string) {
     const api = Api.getInstance();
-    const data = await api.post('/refresh', { token: token, refreshToken: refreshToken })
+    const data = await api.post('/auth/refresh', { token: token, refreshToken: refreshToken })
     if (data.status === 200) {
       this.setTokens(data.data.token, data.data.refreshToken)
     } else {

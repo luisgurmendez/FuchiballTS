@@ -1,20 +1,26 @@
 import axios from 'axios';
 import { NavigatorService } from './navigation';
-import { Tokens } from './Auth';
+import { Tokens, Auth } from './Auth';
+
 
 axios.interceptors.response.use((response) => {
+  try {
+    response.data = JSON.parse(response.data);
+  } catch (e) {
+    console.log('Un parsable', response.data);
+  }
   return response;
 }, function (error) {
-
-  if (error.response.status === 401 || error.response.status === 403) {
-    //TODO: Authorization vs authentication?
-
-
-    NavigatorService.getInstance().navigate('Login')
+  if (error.response.status === 401) {
+    // Refresh token?
   }
 
   return Promise.reject(error.response.data);
 });
+
+interface ServerResponseData<T> {
+  data: T
+}
 
 const baseUrl = 'http://localhost:3001';
 
@@ -22,8 +28,8 @@ export class Api {
 
   private static instance: Api;
   private baseUrl: string;
-  private authToken: string | undefined;
-  private refreshToken: string | undefined;
+  public authToken: string | undefined;
+  public refreshToken: string | undefined;
 
   public static getInstance(): Api {
 
@@ -50,12 +56,16 @@ export class Api {
     this.refreshToken = tokens.refreshToken;
   }
 
-  post(url: string, data: any = {}) {
-    return axios.post(url, data, { headers: this.getHeaders(), baseURL: this.baseUrl })
+  post<T = any>(url: string, data: any = {}) {
+    return axios.post<T>(url, data, { headers: this.getHeaders(), baseURL: this.baseUrl })
   }
 
-  get(url: string, data?: any) {
-    return axios.get(url, { headers: this.getHeaders(), baseURL: this.baseUrl })
+  get<T = any>(url: string, data?: any) {
+    return axios.get<T>(url, {
+      headers: this.getHeaders(),
+      baseURL: this.baseUrl,
+      transformResponse: (res: ServerResponseData<T>) => res
+    })
   }
 }
 

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { NavigationInjectedProps, withNavigation } from 'react-navigation';
 import { View } from 'react-native';
-import { Loader } from '../../components';
-import jwtDecode from 'jwt-decode';
-import { initApi } from '../../core/Api';
+import { Loader } from 'components';
+import { initApi } from 'core/Api';
 import { Auth, NoTokenError, RefreshTokenError } from 'core/Auth';
 import { NavigatorService } from 'core/navigation';
+import { Logger } from 'core/Logger';
 
 export const SplashBase: React.FC<NavigationInjectedProps> = props => {
   const navigatorService = NavigatorService.getInstance();
@@ -23,6 +23,8 @@ export const SplashBase: React.FC<NavigationInjectedProps> = props => {
       if (e instanceof NoTokenError || e instanceof RefreshTokenError) {
         navigatorService.navigate('Login');
       }
+
+      // Logger.error(e);
     }
   }
 
